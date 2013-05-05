@@ -1,0 +1,11 @@
+h1,h2,h3,li,a {
+	color:#505050 ;
+	font-family:"Segoe UI Light";
+}
+a{
+	font-size:1.875em;	
+}
+
+a.doc{
+	font-size:0.975em;	
+}

@@ -1,0 +1,50 @@
+package transitdroid.domain.entities.pass.monthly;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.UUID;
+import transitdroid.data.pass.monthly.MonthlyPassTIG;
+import transitdroid.domain.core.BaseInputMapper;
+
+
+public class MonthlyPassInputMapper extends BaseInputMapper<MonthlyPass>{
+
+	
+	public MonthlyPass find(UUID id){
+		ResultSet set = null;
+		MonthlyPass monthlyPass = null;
+		if ((monthlyPass = MonthlyPassIdentityMap.getUniqueInstance().get(id)) != null){
+			return monthlyPass;
+		}
+		try{
+			set = MonthlyPassTIG.find(id);
+			if (set.next())
+			monthlyPass = map(set);
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		return monthlyPass;
+	}
+	
+//	public static User find(String username, String password) throws SQLException {
+//		ResultSet set = null;
+//		User user = null;
+//			set = UserTIG.find(username, password);
+//			if (!set.next()){
+//				throw new SQLException();
+//			}
+//			user = map(set);
+//		return user;
+//	}
+	
+	protected MonthlyPass map(ResultSet set) throws SQLException{
+		MonthlyPass monthlyPass = null;
+		if ((monthlyPass = MonthlyPassIdentityMap.getUniqueInstance().get(UUID.fromString(set.getString(1)))) != null){
+			return monthlyPass;
+		}
+		monthlyPass = MonthlyPassFactory.createClean(UUID.fromString(set.getString(1)), set.getInt(2));	
+		MonthlyPassIdentityMap.getUniqueInstance().put(monthlyPass.getId(), monthlyPass);
+		return monthlyPass;
+	}
+}

@@ -1,0 +1,1 @@
+$('.holder_content').load('loggedOutContent.jsp');

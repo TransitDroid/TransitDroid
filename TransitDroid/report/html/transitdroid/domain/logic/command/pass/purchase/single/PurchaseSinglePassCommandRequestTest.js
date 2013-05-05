@@ -1,0 +1,10 @@
+var clover = new Object();
+
+// JSON: {classes : [{name, id, sl, el,  methods : [{sl, el}, ...]}, ...]}
+clover.pageData = {"classes":[{"el":39,"id":3007,"methods":[{"el":12,"sc":2,"sl":9},{"el":17,"sc":2,"sl":14},{"el":22,"sc":2,"sl":19},{"el":27,"sc":2,"sl":24},{"el":32,"sc":2,"sl":29},{"el":37,"sc":2,"sl":34}],"name":"PurchaseSinglePassCommandRequestTest","sl":7}]}
+
+// JSON: {test_ID : {"methods": [ID1, ID2, ID3...], "name" : "testXXX() void"}, ...};
+clover.testTargets = {"test_1141":{"methods":[{"sl":14}],"name":"testSetMobileDeviceMAC","pass":false,"statements":[{"sl":16}]},"test_1275":{"methods":[{"sl":19}],"name":"testGetVersion","pass":false,"statements":[{"sl":21}]},"test_1295":{"methods":[{"sl":9}],"name":"testGetMobileDeviceMAC","pass":false,"statements":[{"sl":11}]},"test_1303":{"methods":[{"sl":19}],"name":"testGetVersion","pass":false,"statements":[{"sl":21}]},"test_1542":{"methods":[{"sl":34}],"name":"testSetQuantity","pass":false,"statements":[{"sl":36}]},"test_208":{"methods":[{"sl":24}],"name":"testSetVersion","pass":false,"statements":[{"sl":26}]},"test_34":{"methods":[{"sl":24}],"name":"testSetVersion","pass":false,"statements":[{"sl":26}]},"test_511":{"methods":[{"sl":9}],"name":"testGetMobileDeviceMAC","pass":false,"statements":[{"sl":11}]},"test_544":{"methods":[{"sl":34}],"name":"testSetQuantity","pass":false,"statements":[{"sl":36}]},"test_846":{"methods":[{"sl":14}],"name":"testSetMobileDeviceMAC","pass":false,"statements":[{"sl":16}]},"test_942":{"methods":[{"sl":29}],"name":"testGetQuantity","pass":false,"statements":[{"sl":31}]},"test_981":{"methods":[{"sl":29}],"name":"testGetQuantity","pass":false,"statements":[{"sl":31}]}}
+
+// JSON: { lines : [{tests : [testid1, testid2, testid3, ...]}, ...]};
+clover.srcFileLines = [[], [], [], [], [], [], [], [], [], [511, 1295], [], [511, 1295], [], [], [1141, 846], [], [1141, 846], [], [], [1303, 1275], [], [1303, 1275], [], [], [208, 34], [], [208, 34], [], [], [981, 942], [], [981, 942], [], [], [544, 1542], [], [544, 1542], [], [], []]

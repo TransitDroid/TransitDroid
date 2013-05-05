@@ -1,0 +1,10 @@
+var clover = new Object();
+
+// JSON: {classes : [{name, id, sl, el,  methods : [{sl, el}, ...]}, ...]}
+clover.pageData = {"classes":[{"el":39,"id":2966,"methods":[{"el":12,"sc":2,"sl":9},{"el":17,"sc":2,"sl":14},{"el":22,"sc":2,"sl":19},{"el":27,"sc":2,"sl":24},{"el":32,"sc":2,"sl":29},{"el":37,"sc":2,"sl":34}],"name":"PurchaseThreeDayPassCommandRequestTest","sl":7}]}
+
+// JSON: {test_ID : {"methods": [ID1, ID2, ID3...], "name" : "testXXX() void"}, ...};
+clover.testTargets = {"test_117":{"methods":[{"sl":9}],"name":"testGetMobileDeviceMAC","pass":false,"statements":[{"sl":11}]},"test_130":{"methods":[{"sl":19}],"name":"testGetVersion","pass":false,"statements":[{"sl":21}]},"test_1316":{"methods":[{"sl":34}],"name":"testSetDate","pass":false,"statements":[{"sl":36}]},"test_214":{"methods":[{"sl":29}],"name":"testGetDate","pass":false,"statements":[{"sl":31}]},"test_26":{"methods":[{"sl":14}],"name":"testSetMobileDeviceMAC","pass":false,"statements":[{"sl":16}]},"test_322":{"methods":[{"sl":34}],"name":"testSetDate","pass":false,"statements":[{"sl":36}]},"test_375":{"methods":[{"sl":14}],"name":"testSetMobileDeviceMAC","pass":false,"statements":[{"sl":16}]},"test_614":{"methods":[{"sl":29}],"name":"testGetDate","pass":false,"statements":[{"sl":31}]},"test_652":{"methods":[{"sl":9}],"name":"testGetMobileDeviceMAC","pass":false,"statements":[{"sl":11}]},"test_839":{"methods":[{"sl":24}],"name":"testSetVersion","pass":false,"statements":[{"sl":26}]},"test_895":{"methods":[{"sl":24}],"name":"testSetVersion","pass":false,"statements":[{"sl":26}]},"test_953":{"methods":[{"sl":19}],"name":"testGetVersion","pass":false,"statements":[{"sl":21}]}}
+
+// JSON: { lines : [{tests : [testid1, testid2, testid3, ...]}, ...]};
+clover.srcFileLines = [[], [], [], [], [], [], [], [], [], [117, 652], [], [117, 652], [], [], [26, 375], [], [26, 375], [], [], [953, 130], [], [953, 130], [], [], [895, 839], [], [895, 839], [], [], [214, 614], [], [214, 614], [], [], [322, 1316], [], [322, 1316], [], [], []]
