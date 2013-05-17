@@ -21,8 +21,6 @@ public class DailyPassTDG extends TableDataGateway{
 				" KEY `card_idx` (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 	}
 	
-	
-	
 	public static long getNextId() throws URISyntaxException {
 		return IdFactory.getNext(TABLE);
 	}

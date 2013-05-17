@@ -13,7 +13,7 @@
 <form id="singlePass" class="layover" method="POST">
 
 	<label>Quantity<span class="small">Select from list</span></label><input list="types" id="singlePassQuantity" autofocus required><br/>
-	    <label for="cc">Credit Card Number:</label>
+	    <label for="cc">Credit Card Number:<span class="small">No charges will apply</span></label>
 	    <input id="cc" type="text" pattern="[0-9]{13,16}" required />
 	    <div class="input-validation"></div><br />
 	    <img src="${ pageContext.request.contextPath }/UI/img/MCVisa.gif"/>

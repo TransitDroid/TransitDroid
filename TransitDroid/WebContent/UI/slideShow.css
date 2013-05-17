@@ -80,7 +80,7 @@
 
 h1, h2, h3, h4, h5, h6 {
 	font-family:Arial, Helvetica;
-    font-weight: normal;
+    font-weight: lighter;
 	position:relative;
 }
 	
@@ -113,7 +113,7 @@ h2{
 
 	
 h3{
-	font-size: 28px;
+	font-size: 22px;
 	line-height:1.6;
 	color:black;
 	text-transform:none;
@@ -135,7 +135,7 @@ h3{
 }
 
 h4{
-	font-size: 15px;
+	font-size: 18px;
 	line-height:1.7;
 	color:black;
 	text-align:left;
@@ -297,10 +297,10 @@ h4 span{
 #footer{
 	position:relative;
 	border: none;
-	height:60px;
+	height:45px;
 	clear:both;
 	width:100%;
-	margin-bottom:18px;
+	/*margin-bottom:18px;*/
 	background-color:#0099CC;
 }
 
@@ -311,19 +311,13 @@ h4 span{
 #FooterTwo{
 	position: absolute;
 	right: 225px;
-	top:26px;
+	top:10px;
 	color:white;
 }
 
 #FooterTree{
 	position: absolute;
 	left: 225px;
-	top:26px;
+	top:10px;
 	color:white;
-}
-
-.container{
-    width:980px;
-    margin:0 auto;
-	background-color:#33CC99;
 }

@@ -1,4 +1,3 @@
-
    <section class="group1">
    <h3>My Account</h3>
    <article class="holder_gallery">
@@ -12,6 +11,7 @@
    <p id ="singlePass">Number of single passes left: </p>
    <br/>
    <p id ="monthlyPass">Monthly pass active: </p> 
+   <b><i><h5>Transit Droid is a proof of concept project. It cannot be used on any transit system</h5></b></i>
    
    
    </div>

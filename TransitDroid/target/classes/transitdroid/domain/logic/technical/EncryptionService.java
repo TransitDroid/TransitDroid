@@ -418,7 +418,6 @@ public class EncryptionService {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Contract org" + EncryptionService.encode(org));
 			System.out.println("Contract Key: "+encryptToString(org, saltBytes));
 			System.out.println("Phone Key: "+encrypted.get(i));
 			if (!Arrays.equals(org, decrypt(encrypted.get(i), salt))){

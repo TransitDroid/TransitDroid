@@ -12,7 +12,7 @@
 <div id="cc">
 <form id="monthlyPass" class="layover" method="POST">
 	<label>Month<span class="small">Choose from list</span></label><input list="months" class ="focusMe" type="month" id="month" autofocus required><br/>
-	    <label for="cc">Credit Card Number:</label>
+	    <label for="cc">Credit Card Number:<span class="small">No charges will apply</span></label>
 	    <input id="cc" type="text" pattern="[0-9]{13,16}" required />
 	    <div class="input-validation"></div><br />
 	    <img src="${ pageContext.request.contextPath }/UI/img/MCVisa.gif"/>

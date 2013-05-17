@@ -19,7 +19,7 @@
 			   <option> 12
 			</datalist>
 			
-	    <label for="cc">Credit Card Number:</label>
+	    <label for="cc">Credit Card Number:<span class="small">No charges will apply</span></label>
 	    <input id="cc" type=text pattern="[0-9]{13,16}" placeholder="Creditcard Number" required />
 	    
 	    

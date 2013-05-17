@@ -1,8 +1,18 @@
 @CHARSET "UTF-8";
-body{
-	font: 12px Segoe UI, Helvetica;
-	height: 100%;
+h1,h2,h3,h4,h5,li,a,p {
+	color:#505050 ;
+	font-family: "Segoe UI", "Segoe UI Light", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+	font-weight: lighter;
 }
+p{
+	font-size: 15px;
+}
+body{
+	font-family: "Segoe UI", "Segoe UI Light", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+	height: 100%;
+	font-weight=lighter;
+}
+
 #menu, #menu ul {
         margin: 0;
         padding: 0;
@@ -10,6 +20,7 @@ body{
 }
 
 #menu {
+		height: 45px;
         width: 100%;
         /*border: 1px solid #222;*/
         background-color: #0099CC;

@@ -26,6 +26,7 @@
     
     console.log('init',[xsize,ysize]);
     $('#target').Jcrop({
+    	boxWidth: 50,
       onChange: updatePreview,
       onSelect: updatePreview,
       aspectRatio: xsize / ysize
@@ -78,7 +79,6 @@
   padding: 6px;
   border: 1px rgba(0,0,0,.4) solid;
   background-color: white;
-
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -102,31 +102,43 @@
 </head>
 <body>
 
-<div class="container">
-<div class="row">
-<div class="span12">
-<div class="jc-demo-box">
+	<div class="container">
+		<div class="row">
+			<div class="span12">
 
-<div class="page-header">
+					<div class="page-header">
+						<h1>Upload Profile Photo</h1>
+					</div>
+					<input id='uploadPhoto' type='file'/> 
+					<img src="${ pageContext.request.contextPath }/UI/jcrop_files/pool.jpg"
+						id="target" class="target" alt="[Jcrop Example]" />
+					<div id="preview-pane">
+						<div class="preview-container">
+							<img class="preview"
+								src="${ pageContext.request.contextPath }/UI/jcrop_files/pool.jpg"
+								class="jcrop-preview" alt="Preview" />
+						</div>
+					</div>
 
-<h1>Aspect Ratio with Preview Pane</h1>
-</div>
+					<div class="description">
+						<p>
+						<form action="crop.php" method="post"
+							onsubmit="return checkCoords();">
+							<input type="hidden" id="x" name="x" /> <input type="hidden"
+								id="y" name="y" /> <input type="hidden" id="w" name="w" /> <input
+								type="hidden" id="h" name="h" /> <input type="submit"
+								value="Crop Image" class="btn btn-large btn-inverse" />
+						</form>
+						</p>
 
-  <img src="${ pageContext.request.contextPath }/UI/jcrop_files/pool.jpg" id="target" alt="[Jcrop Example]" />
 
-  <div id="preview-pane">
-    <div class="preview-container">
-      <img src="${ pageContext.request.contextPath }/UI/jcrop_files/pool.jpg" class="jcrop-preview" alt="Preview" />
-    </div>
-  </div>
+					</div>
 
+					<div class="clearfix"></div>
 
-<div class="clearfix"></div>
-
-</div>
-</div>
-</div>
-</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

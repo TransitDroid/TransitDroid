@@ -36,7 +36,7 @@ function logout() {
 }
 
 function upload(){
-	$('.holder_content').load('/TransitDroid2.0/JSP/User/UploadPhoto.jsp');
+	$('.holder_content').load('/TransitDroid/JSP/User/UploadPhoto.jsp');
 	//loadJcrop();
 }
 function fileSelected() {
@@ -63,7 +63,7 @@ function login() {
 	var password = $('#password').val();
 	var data = '{"username":"'+username+'","password":"'+password+'"}';
 
-	postAction('/TransitDroid2.0/rest/account/login/', data, function(output) {
+	postAction('/TransitDroid/rest/account/login/', data, function(output) {
 		if (output["succeed"] == "true"){
 			user = output["user"];
 			setCookie(userCookie, user, 30);
@@ -81,7 +81,7 @@ function login() {
 
 function processTransaction() {
 	var data = '{"keys":[{"key":"C3f7T/i7GRqztMs7H5T3WA==","key":"pOBOuItsYTeztMs7H5T3WA==","key":"1RvIpy9yUhSztMs7H5T3WA==","key":"afpjsZ7OHc6ztMs7H5T3WA=="}], "passcode":"6drWsIyUnrk=","phoneMac":"784930214321"}';
-	postAction('/TransitDroid2.0/rest/transaction/process/', data, function(
+	postAction('/TransitDroid/rest/transaction/process/', data, function(
 			output) {
 		hideOverlay();
 		return false;
@@ -95,7 +95,7 @@ function createUser() {
 	
 	var data = '{"roles":[{"role":"user", "role":"account_manager"}], "firstName":"'+firstName+'", '
 			+ '"lastName":"'+lastName+'", "username":"'+username+'", "password":"'+password+'"}';
-	postAction('/TransitDroid2.0/rest/account/user/create/', data, function(
+	postAction('/TransitDroid/rest/account/user/create/', data, function(
 			output) {
 		var result = "Welcome " + output["user"]["firstName"] + " "
 				+ output["user"]["lastName"] + "!";
@@ -115,7 +115,7 @@ function UpdateUser(){
 	var password = $('createUserPassword').val();
 	var data = '{"roles":[{"role":"user", "role":"account_manager"}], "id":"'+user[id]+'", "firstName":"'+firstName+'", '
 			+ '"lastName":"'+lastName+'", "username":"'+username+'", "password":"'+password+'"}';
-	postAction('/TransitDroid2.0/rest/account/user/update/', data, function(
+	postAction('/TransitDroid/rest/account/user/update/', data, function(
 			output) {
 		var result = "Hello " + output["user"]["firstName"] + " "
 				+ output["user"]["lastName"] + "!";
@@ -129,7 +129,7 @@ function UpdateUser(){
 function purchaseSinglePass() {
 
 	var data = '{"mobileDeviceMAC":"784930214321","version":"5","quantity":"5","date":"2013-03-27T09:00:00"}';
-	postAction('/TransitDroid2.0/rest/purchase/single/', data,
+	postAction('/TransitDroid/rest/purchase/single/', data,
 			function(output) {
 				alert(output['succeed']);
 			});
@@ -140,7 +140,7 @@ function purchaseSinglePass() {
 function purchaseMonthlyPass() {
 
 	var data = '{"mobileDeviceMAC":"784930214321","version":"1","month":"3","year":"2013"}';
-	postAction('/TransitDroid2.0/rest/purchase/monthly/', data,
+	postAction('/TransitDroid/rest/purchase/monthly/', data,
 			function(output) {
 				alert(output['succeed']);
 			});
@@ -151,7 +151,7 @@ function purchaseMonthlyPass() {
 
 function purchaseYearlyPass() {
 	var data = '{"mobileDeviceMAC":"784930214321","version":"5","date":"2013-03-27T09:00:00"}';
-	postAction('/TransitDroid2.0/rest/purchase/yearly/', data,
+	postAction('/TransitDroid/rest/purchase/yearly/', data,
 			function(output) {
 				alert(output['succeed']);
 			});
@@ -162,7 +162,7 @@ function purchaseYearlyPass() {
 function purchaseNightlyPass() {
 
 	var data = '{"mobileDeviceMAC":"784930214321","version":"5","date":"2013-03-27T09:00:00"}';
-	postAction('/TransitDroid2.0/rest/purchase/nightly/', data,
+	postAction('/TransitDroid/rest/purchase/nightly/', data,
 			function(output) {
 				alert(output['succeed']);
 			});
@@ -172,7 +172,7 @@ function purchaseNightlyPass() {
 
 function purchaseThreeDayPass() {
 	var data = '{"mobileDeviceMAC":"784930214321","version":"5","date":"2013-03-27T09:00:00"}';
-	postAction('/TransitDroid2.0/rest/purchase/threeday/', data, function(
+	postAction('/TransitDroid/rest/purchase/threeday/', data, function(
 			output) {
 		alert(output['succeed']);
 	});
@@ -182,7 +182,7 @@ function purchaseThreeDayPass() {
 
 function purchaseWeeklyPass() {
 	var data = '{"mobileDeviceMAC":"784930214321","version":"5","date":"2013-03-27T09:00:00"}';
-	postAction('/TransitDroid2.0/rest/purchase/single/', data,
+	postAction('/TransitDroid/rest/purchase/single/', data,
 			function(output) {
 				alert(output['succeed']);
 			});
@@ -191,8 +191,8 @@ function purchaseWeeklyPass() {
 }
 
 function registerDevice() {
-	var data = '{"mobileDeviceMAC":"TESTING", "username":"wsmelser", "password":"smelser"}';
-	postAction('/TransitDroid2.0/rest/account/device/register/', data,
+	var data = '{"mobileDeviceMAC":"784930214321", "username":"wsmelser", "password":"smelser"}';
+	postAction('/TransitDroid/rest/account/device/register/', data,
 			function(output) {
 				alert(output['succeed']);
 			});
