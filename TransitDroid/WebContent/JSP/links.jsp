@@ -4,7 +4,6 @@
 <script type="text/javascript" src="${ pageContext.request.contextPath }/JS/slideShow.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/JS/jquery.Jcrop.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/JS/main.js"></script>
-<script type="text/javascript" src="${ pageContext.request.contextPath }/JS/jcrop.js"></script>
 
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/UI/slideShow.css">
 <link rel="icon" href="${ pageContext.request.contextPath }/UI/images/androidLightBlue.png" type="image/x-icon" />  

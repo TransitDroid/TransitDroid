@@ -3,6 +3,7 @@ package transitdroid.domain.entities.card;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
+import transitdroid.domain.core.IdentityMapRepository;
 import transitdroid.domain.core.UnitOfWork;
 import transitdroid.domain.entities.pass.daily.DailyPass;
 import transitdroid.domain.entities.pass.daily.IDailyPass;
@@ -45,7 +46,7 @@ public class CardFactory {
 	
 		Card card= new Card(id, version, monthlyPass, nightlyPass, dailyPass, singlePass, threeDayPass, yearlyPass);
 		UnitOfWork.getInstance().RegisterNew(card);
-		CardIdentityMap.getUniqueInstance().put(card);
+		IdentityMapRepository.getIdentityMap(Card.class).put(card);
 		return card;
 	}
 	/**

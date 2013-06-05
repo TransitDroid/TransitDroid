@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="JS/jquery.Jcrop.min.js|JS/jquery.js|JS/jquery.tools.min.js|JS/jquery.tools.overlay.js" kind="src" path="WebContent"/>
+	<classpathentry excluding="JS/|JS/cropping/jquery.min.js|JS/jquery.Jcrop.min.js|JS/jquery.js|JS/jquery.tools.min.js|JS/jquery.tools.overlay.js" kind="src" path="WebContent"/>
+	<classpathentry kind="lib" path="WebContent/JS/cropping/jquery.min.js"/>
 	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.WebProject">
 		<attributes>

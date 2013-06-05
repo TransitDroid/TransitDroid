@@ -7,13 +7,14 @@ import java.util.UUID;
 
 import transitdroid.data.pass.yearly.YearlyPassTIG;
 import transitdroid.domain.core.BaseInputMapper;
+import transitdroid.domain.core.IdentityMapRepository;
 
 public class YearlyPassInputMapper extends BaseInputMapper<YearlyPass> {
 
 	public YearlyPass find(UUID id) {
 		ResultSet set = null;
 		YearlyPass yearlyPass = null;
-		if ((yearlyPass = YearlyPassIdentityMap.getUniqueInstance().get(id)) != null) {
+		if ((yearlyPass = (YearlyPass) IdentityMapRepository.getIdentityMap(YearlyPass.class).get(id)) != null) {
 			return yearlyPass;
 		}
 		try {
@@ -29,14 +30,13 @@ public class YearlyPassInputMapper extends BaseInputMapper<YearlyPass> {
 
 	protected YearlyPass map(ResultSet set) throws SQLException {
 		YearlyPass yearlyPass = null;
-		if ((yearlyPass = YearlyPassIdentityMap.getUniqueInstance().get(
+		if ((yearlyPass = (YearlyPass) IdentityMapRepository.getIdentityMap(YearlyPass.class).get(
 				UUID.fromString(set.getString(1)))) != null) {
 			return yearlyPass;
 		}
 		yearlyPass = YearlyPassFactory.createClean(
 				UUID.fromString(set.getString(1)), set.getInt(2));
-		YearlyPassIdentityMap.getUniqueInstance().put(yearlyPass.getId(),
-				yearlyPass);
+		IdentityMapRepository.getIdentityMap(YearlyPass.class).put(yearlyPass);
 		return yearlyPass;
 	}
 

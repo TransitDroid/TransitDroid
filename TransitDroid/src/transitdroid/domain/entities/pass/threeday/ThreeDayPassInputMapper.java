@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import transitdroid.data.pass.threeday.ThreeDayPassTIG;
 import transitdroid.domain.core.BaseInputMapper;
+import transitdroid.domain.core.IdentityMapRepository;
 
 
 
@@ -15,7 +16,7 @@ public class ThreeDayPassInputMapper extends BaseInputMapper<ThreeDayPass>{
 	public ThreeDayPass find(UUID id){
 		ResultSet set = null;
 		ThreeDayPass threeDayPass = null;
-		if ((threeDayPass = ThreeDayPassIdentityMap.getUniqueInstance().get(id)) != null){
+		if ((threeDayPass = (ThreeDayPass) IdentityMapRepository.getIdentityMap(ThreeDayPass.class).get(id)) != null){
 			return threeDayPass;
 		}
 		try{
@@ -42,11 +43,11 @@ public class ThreeDayPassInputMapper extends BaseInputMapper<ThreeDayPass>{
 	
 	protected ThreeDayPass map(ResultSet set) throws SQLException{
 		ThreeDayPass threeDayPass = null;
-		if ((threeDayPass = ThreeDayPassIdentityMap.getUniqueInstance().get(UUID.fromString(set.getString(1)))) != null){
+		if ((threeDayPass = (ThreeDayPass) IdentityMapRepository.getIdentityMap(ThreeDayPass.class).get(UUID.fromString(set.getString(1)))) != null){
 			return threeDayPass;
 		}
 		threeDayPass = ThreeDayPassFactory.createClean(UUID.fromString(set.getString(1)), set.getInt(2));	
-		ThreeDayPassIdentityMap.getUniqueInstance().put(threeDayPass.getId(), threeDayPass);
+		IdentityMapRepository.getIdentityMap(ThreeDayPass.class).put(threeDayPass);
 		return threeDayPass;
 	}
 

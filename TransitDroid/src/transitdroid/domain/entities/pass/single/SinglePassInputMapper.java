@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import transitdroid.data.pass.single.SinglePassTIG;
 import transitdroid.domain.core.BaseInputMapper;
+import transitdroid.domain.core.IdentityMapRepository;
 
 
 
@@ -15,7 +16,7 @@ public class SinglePassInputMapper extends BaseInputMapper<SinglePass>{
 	public SinglePass find(UUID id){
 		ResultSet set = null;
 		SinglePass singlePass = null;
-		if ((singlePass = SinglePassIdentityMap.getUniqueInstance().get(id)) != null){
+		if ((singlePass = (SinglePass) IdentityMapRepository.getIdentityMap(SinglePass.class).get(id)) != null){
 			return singlePass;
 		}
 		try{
@@ -42,11 +43,11 @@ public class SinglePassInputMapper extends BaseInputMapper<SinglePass>{
 	
 	protected SinglePass map(ResultSet set) throws SQLException{
 		SinglePass singlePass = null;
-		if ((singlePass = SinglePassIdentityMap.getUniqueInstance().get(UUID.fromString(set.getString(1)))) != null){
+		if ((singlePass = (SinglePass) IdentityMapRepository.getIdentityMap(SinglePass.class).get(UUID.fromString(set.getString(1)))) != null){
 			return singlePass;
 		}
 		singlePass = SinglePassFactory.createClean(UUID.fromString(set.getString(1)), set.getInt(2), set.getInt(3), set.getDouble(4), set.getDate(5));	
-		SinglePassIdentityMap.getUniqueInstance().put(singlePass.getId(), singlePass);
+		IdentityMapRepository.getIdentityMap(SinglePass.class).put(singlePass);
 		return singlePass;
 	}
 

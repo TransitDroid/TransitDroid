@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import transitdroid.data.pass.daily.DailyPassTIG;
 import transitdroid.domain.core.BaseInputMapper;
+import transitdroid.domain.core.IdentityMapRepository;
 
 
 
@@ -16,7 +17,7 @@ public class DailyPassInputMapper extends BaseInputMapper<DailyPass>{
 	public DailyPass find(UUID id){
 		ResultSet set = null;
 		DailyPass dailyPass = null;
-		if ((dailyPass = DailyPassIdentityMap.getUniqueInstance().get(id)) != null){
+		if ((dailyPass = (DailyPass) IdentityMapRepository.getIdentityMap(DailyPass.class).get(id)) != null){
 			return dailyPass;
 		}
 		try{
@@ -32,11 +33,11 @@ public class DailyPassInputMapper extends BaseInputMapper<DailyPass>{
 	
 	protected DailyPass map(ResultSet set) throws SQLException{
 		DailyPass dailyPass= null;
-		if ((dailyPass = DailyPassIdentityMap.getUniqueInstance().get(UUID.fromString(set.getString(1)))) != null){
+		if ((dailyPass = (DailyPass) IdentityMapRepository.getIdentityMap(DailyPass.class).get(UUID.fromString(set.getString(1)))) != null){
 			return dailyPass;
 		}
 		dailyPass = DailyPassFactory.createClean(UUID.fromString(set.getString(1)), set.getInt(2));	
-		DailyPassIdentityMap.getUniqueInstance().put(dailyPass);
+		IdentityMapRepository.getIdentityMap(DailyPass.class).put(dailyPass);
 		return dailyPass;
 	}
 

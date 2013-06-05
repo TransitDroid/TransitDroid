@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.UUID;
 
+import transitdroid.domain.core.IdentityMapRepository;
 import transitdroid.domain.core.UnitOfWork;
 
 
@@ -55,7 +56,7 @@ public class UserFactory {
 	public static User createNew(UUID id, int version, List<UserRole> roles, String firstName,
 			String lastName, String username, byte[] password, byte[] salt){
 		User user = new User(id, version, roles, firstName, lastName, username, password, salt);
-		UserIdentityMap.getUniqueInstance().put(user.getId(), user);
+		IdentityMapRepository.getIdentityMap(User.class).put(user);
 		UnitOfWork.getInstance().RegisterNew(user);
 		return user;
 	}

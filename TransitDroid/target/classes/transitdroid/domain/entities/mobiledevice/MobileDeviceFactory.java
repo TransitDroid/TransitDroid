@@ -3,6 +3,7 @@ package transitdroid.domain.entities.mobiledevice;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
+import transitdroid.domain.core.IdentityMapRepository;
 import transitdroid.domain.core.UnitOfWork;
 /**
  * 
@@ -26,7 +27,7 @@ public class MobileDeviceFactory {
 	{
 		MobileDevice mobileDevice = new MobileDevice(id,version,PMAC);
 		UnitOfWork.getInstance().RegisterNew(mobileDevice);
-		MobileDeviceIdentityMap.getUniqueInstance().put(mobileDevice);
+		IdentityMapRepository.getIdentityMap(MobileDevice.class).put(mobileDevice);
 		return mobileDevice;
 	}
 	/**
@@ -54,7 +55,7 @@ public class MobileDeviceFactory {
 	public static MobileDevice createClean(UUID id, int version, String PMAC)
 	{
 		MobileDevice mobileDevice = new MobileDevice(id,version,PMAC);
-		MobileDeviceIdentityMap.getUniqueInstance().put(mobileDevice);
+		IdentityMapRepository.getIdentityMap(MobileDevice.class).put(mobileDevice);
 		return mobileDevice;
 	}
 	

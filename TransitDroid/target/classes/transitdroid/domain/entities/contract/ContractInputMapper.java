@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import transitdroid.data.contract.ContractTIG;
 import transitdroid.domain.core.BaseInputMapper;
+import transitdroid.domain.core.IdentityMapRepository;
 import transitdroid.domain.entities.card.CardProxy;
 import transitdroid.domain.entities.mobiledevice.MobileDeviceProxy;
 import transitdroid.domain.entities.user.UserProxy;
@@ -51,7 +52,7 @@ public class ContractInputMapper extends BaseInputMapper<Contract>{
 	@Override
 	protected Contract map(ResultSet set) throws SQLException {
 		Contract contract = null;
-		if ((contract = ContractIdentityMap.getUniqueInstance().get(UUID.fromString(set.getString(1)))) != null){
+		if ((contract = (Contract) IdentityMapRepository.getIdentityMap(Contract.class).get(UUID.fromString(set.getString(1)))) != null){
 			return contract;
 		}
 		List<byte[]> keys = new ArrayList<byte[]>();

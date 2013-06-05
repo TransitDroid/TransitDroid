@@ -3,6 +3,7 @@ package transitdroid.domain.entities.contract;
 import java.util.List;
 import java.util.UUID;
 
+import transitdroid.domain.core.IdentityMapRepository;
 import transitdroid.domain.core.UnitOfWork;
 import transitdroid.domain.entities.card.ICard;
 import transitdroid.domain.entities.mobiledevice.IMobileDevice;
@@ -42,7 +43,7 @@ public class ContractFactory {
 	public static Contract createNew(UUID id, List<byte[]> keys, IMobileDevice phoneId, ICard card, IUser user, byte[] salt){
 		Contract contract = new Contract(id, 1, keys, phoneId, card, user, salt);
 		UnitOfWork.getInstance().RegisterNew(contract);
-		ContractIdentityMap.getUniqueInstance().put(contract);
+		IdentityMapRepository.getIdentityMap(Contract.class).put(contract);
 		return contract;
 	}
 	/**
@@ -57,7 +58,7 @@ public class ContractFactory {
 	 */
 	public static Contract createClean(UUID id, List<byte[]> keys, IMobileDevice phoneId, ICard card, IUser user, byte[] salt){
 		Contract contract = new Contract(id, 1, keys, phoneId, card, user, salt);
-		ContractIdentityMap.getUniqueInstance().put(contract);
+		IdentityMapRepository.getIdentityMap(Contract.class).put(contract);
 		return contract;
 	}
 	@SuppressWarnings("unchecked")
@@ -66,7 +67,7 @@ public class ContractFactory {
 		UUID id = UUID.randomUUID();
 		Contract contract = new Contract(id, 1, md, card, user);
 		UnitOfWork.getInstance().RegisterNew(contract);
-		ContractIdentityMap.getUniqueInstance().put(contract);
+		IdentityMapRepository.getIdentityMap(Contract.class).put(contract);
 		return contract;
 	}
 }

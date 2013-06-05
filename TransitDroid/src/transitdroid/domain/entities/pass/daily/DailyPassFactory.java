@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.UUID;
 
+import transitdroid.domain.core.IdentityMapRepository;
 import transitdroid.domain.core.UnitOfWork;
 
 public class DailyPassFactory {
@@ -24,7 +25,7 @@ public class DailyPassFactory {
 		UUID id = UUID.randomUUID();
 		DailyPass dailyPass = new DailyPass(id, 1);
 		UnitOfWork.getInstance().RegisterNew(dailyPass);
-		DailyPassIdentityMap.getUniqueInstance().put(dailyPass);
+		IdentityMapRepository.getIdentityMap(DailyPass.class).put(dailyPass);
 		return dailyPass;
 	}
 

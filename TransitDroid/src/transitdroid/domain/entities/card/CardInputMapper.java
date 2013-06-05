@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import transitdroid.data.card.CardTIG;
 import transitdroid.domain.core.BaseInputMapper;
+import transitdroid.domain.core.IdentityMapRepository;
 import transitdroid.domain.entities.pass.daily.DailyPassProxy;
 import transitdroid.domain.entities.pass.monthly.MonthlyPassProxy;
 import transitdroid.domain.entities.pass.nightly.NightlyPassProxy;
@@ -38,7 +39,7 @@ public class CardInputMapper extends BaseInputMapper<Card>{
 	public Card find(UUID id){
 		ResultSet set = null;
 		Card card= null;
-		if ((card = CardIdentityMap.getUniqueInstance().get(id)) != null){
+		if ((card = (Card) IdentityMapRepository.getIdentityMap(Card.class).get(id)) != null){
 			return card;
 		}
 		try{
@@ -59,11 +60,11 @@ public class CardInputMapper extends BaseInputMapper<Card>{
 	 */
 	protected Card map(ResultSet set) throws SQLException{
 		Card card = null;
-		if ((card = CardIdentityMap.getUniqueInstance().get(UUID.fromString(set.getString(1)))) != null){
+		if ((card = (Card) IdentityMapRepository.getIdentityMap(Card.class).get(UUID.fromString(set.getString(1)))) != null){
 			return card;
 		}
 		card= CardFactory.createClean(UUID.fromString(set.getString(1)), set.getInt(2), new MonthlyPassProxy(UUID.fromString(set.getString(3))), new NightlyPassProxy(UUID.fromString(set.getString(4))), new DailyPassProxy(UUID.fromString(set.getString(5))), new SinglePassProxy(UUID.fromString(set.getString(6))), new ThreeDayPassProxy(UUID.fromString(set.getString(7))), new YearlyPassProxy(UUID.fromString(set.getString(8))));	
-		CardIdentityMap.getUniqueInstance().put( card);
+		IdentityMapRepository.getIdentityMap(Card.class).put(card);
 		return card;
 	}
 

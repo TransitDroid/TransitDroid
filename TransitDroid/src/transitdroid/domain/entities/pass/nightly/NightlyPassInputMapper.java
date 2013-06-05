@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 import transitdroid.data.pass.nightly.NightlyPassTIG;
+import transitdroid.domain.core.IdentityMapRepository;
 
 
 
@@ -15,7 +16,7 @@ public class NightlyPassInputMapper {
 	public static NightlyPass find(UUID id){
 		ResultSet set = null;
 		NightlyPass nightlyPass = null;
-		if ((nightlyPass = NightlyPassIdentityMap.getUniqueInstance().get(id)) != null){
+		if ((nightlyPass = (NightlyPass) IdentityMapRepository.getIdentityMap(NightlyPass.class).get(id)) != null){
 			return nightlyPass;
 		}
 		try{
@@ -42,11 +43,11 @@ public class NightlyPassInputMapper {
 	
 	private static NightlyPass map(ResultSet set) throws SQLException{
 		NightlyPass nightlyPass = null;
-		if ((nightlyPass = NightlyPassIdentityMap.getUniqueInstance().get(UUID.fromString(set.getString(1)))) != null){
+		if ((nightlyPass = (NightlyPass) IdentityMapRepository.getIdentityMap(NightlyPass.class).get(UUID.fromString(set.getString(1)))) != null){
 			return nightlyPass;
 		}
 		nightlyPass = NightlyPassFactory.createClean(UUID.fromString(set.getString(1)), set.getInt(2));	
-		NightlyPassIdentityMap.getUniqueInstance().put(nightlyPass.getId(), nightlyPass);
+		IdentityMapRepository.getIdentityMap(NightlyPass.class).put(nightlyPass);
 		return nightlyPass;
 	}
 

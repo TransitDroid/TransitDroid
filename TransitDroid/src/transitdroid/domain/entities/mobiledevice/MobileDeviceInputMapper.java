@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import transitdroid.data.mobiledevice.MobileDeviceTIG;
 import transitdroid.domain.core.BaseInputMapper;
+import transitdroid.domain.core.IdentityMapRepository;
 /**
  * 
  * @author TransitDroid Team
@@ -33,7 +34,7 @@ public class MobileDeviceInputMapper extends BaseInputMapper<MobileDevice>{
 	public MobileDevice find(UUID id){
 		ResultSet set = null;
 		MobileDevice mobileDevice= null;
-		if ((mobileDevice = MobileDeviceIdentityMap.getUniqueInstance().get(id)) != null){
+		if ((mobileDevice = (MobileDevice) IdentityMapRepository.getIdentityMap(MobileDevice.class).get(id)) != null){
 			return mobileDevice;
 		}
 		try{
@@ -64,11 +65,11 @@ public class MobileDeviceInputMapper extends BaseInputMapper<MobileDevice>{
 	 */
 	protected MobileDevice map(ResultSet set) throws SQLException{
 		MobileDevice mobileDevice = null;
-		if ((mobileDevice = MobileDeviceIdentityMap.getUniqueInstance().get(UUID.fromString(set.getString(1)))) != null){
+		if ((mobileDevice = (MobileDevice) IdentityMapRepository.getIdentityMap(MobileDevice.class).get(UUID.fromString(set.getString(1)))) != null){
 			return mobileDevice;
 		}
 		mobileDevice= MobileDeviceFactory.createClean(UUID.fromString(set.getString(1)), set.getInt(2), set.getString(3)  );	
-		MobileDeviceIdentityMap.getUniqueInstance().put(mobileDevice);
+		IdentityMapRepository.getIdentityMap(MobileDevice.class).put(mobileDevice);
 		return mobileDevice;
 	}
 	

@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import transitdroid.data.user.UserTIG;
 import transitdroid.domain.core.BaseInputMapper;
+import transitdroid.domain.core.IdentityMapRepository;
 
 /**
  * 
@@ -35,7 +36,7 @@ public class UserInputMapper extends BaseInputMapper<User>{
 		public User find(UUID id){
 			ResultSet set = null;
 			User user = null;
-			if ((user = UserIdentityMap.getUniqueInstance().get(id)) != null){
+			if ((user = (User) IdentityMapRepository.getIdentityMap(User.class).get(id)) != null){
 				return user;
 			}
 			try{
@@ -72,12 +73,12 @@ public class UserInputMapper extends BaseInputMapper<User>{
 		 */
 		protected User map(ResultSet set) throws SQLException{
 			User user = null;
-			if ((user = UserIdentityMap.getUniqueInstance().get(UUID.fromString(set.getString(1)))) != null){
+			if ((user = (User) IdentityMapRepository.getIdentityMap(User.class).get(UUID.fromString(set.getString(1)))) != null){
 				return user;
 			}
 			user = UserFactory.createClean(UUID.fromString(set.getString("id")), set.getInt("version"), null, set.getString("firstName"),
 					set.getString("lastName"), set.getString("username"), set.getBytes("password"), set.getBytes("salt"));	
-			UserIdentityMap.getUniqueInstance().put(user.getId(), user);
+			IdentityMapRepository.getIdentityMap(User.class).put(user);
 			return user;
 		}
 
